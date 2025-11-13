@@ -31,7 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     final prefs = await SharedPreferences.getInstance();
 
-    // ❌ Reject if user already exists
+    // Reject if user already exists
     if (prefs.containsKey("password_$username")) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('User "$username" already exists.')),
@@ -39,7 +39,7 @@ class _RegisterPageState extends State<RegisterPage> {
       return;
     }
 
-    // ✅ Save user info using unique keys
+    // Save user info using unique keys
     await prefs.setString("username_$username", username);
     await prefs.setString("email_$username", email);
     await prefs.setString("password_$username", password);
