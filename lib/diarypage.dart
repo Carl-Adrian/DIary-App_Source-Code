@@ -105,14 +105,13 @@ class DiaryScreenState extends State<DiaryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // 🔍 FILTER entries
+    
     List<Note> visibleEntries = _entries.where((note) {
       if (_searchQuery.isEmpty) return true;
       final text = (note.title + " " + note.body).toLowerCase();
       return text.contains(_searchQuery);
     }).toList();
 
-    // 🔃 SORT entries
     visibleEntries.sort((a, b) {
       return _sortNewestFirst
           ? b.date.compareTo(a.date)
@@ -328,7 +327,7 @@ class DiaryScreenState extends State<DiaryScreen> {
   }
 }
 
-// --- Edit screen unchanged ---
+
 class NoteEditScreen extends StatefulWidget {
   final Note? note;
 
