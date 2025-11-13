@@ -44,11 +44,9 @@ class MemoryCapsuleScreenState extends State<MemoryCapsuleScreen> {
   Timer? _unlockTimer;
 
   String _userId = "guest";
-
-  // 🔍 Added search state
+//search
   String _searchQuery = "";
-
-  // 🔃 Added optional sort state
+//sort
   bool _sortNewestFirst = true;
 
   @override
@@ -107,7 +105,7 @@ class MemoryCapsuleScreenState extends State<MemoryCapsuleScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // 🔍 QUERY: Search filter
+    // Search filter
     List<Memory> visibleMemories = _memories.where((memory) {
       if (_searchQuery.isEmpty) return true;
       final text =
