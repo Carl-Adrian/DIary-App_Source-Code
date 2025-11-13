@@ -49,17 +49,13 @@ class _LoginPageState extends State<LoginPage> {
             ? imagePath
             : null;
 
-        // OPTIONAL:
-        // If you want username prefilled, keep this line:
         _usernameController.text = lastUser;
 
-        // If you DO NOT WANT IT PREFILLED:
-        // _usernameController.text = "";
       });
     }
   }
 
-  /// Load avatar for typed username
+
   Future<void> _loadUserProfileFor(String username) async {
     if (username.isEmpty) return;
 
