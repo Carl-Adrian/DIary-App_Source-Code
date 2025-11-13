@@ -46,7 +46,7 @@ class TodoScreenState extends State<TodoScreen> {
 
   String _userId = "guest";
 
-  // 🔍 Search + Sort state
+  // Search + Sort state
   String _searchQuery = "";
   bool _sortNewestFirst = true;
 
@@ -95,14 +95,14 @@ class TodoScreenState extends State<TodoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // 🔍 FILTER
+    // FILTER
     List<Task> visibleTasks = _tasks.where((task) {
       if (_searchQuery.isEmpty) return true;
       final text = (task.title + " " + task.description).toLowerCase();
       return text.contains(_searchQuery);
     }).toList();
 
-    // 🔃 SORT
+    // SORT
     visibleTasks.sort((a, b) {
       return _sortNewestFirst
           ? b.date.compareTo(a.date)
@@ -333,7 +333,7 @@ class TodoScreenState extends State<TodoScreen> {
   }
 }
 
-// EDIT SCREEN UNCHANGED
+// EDIT SCREEN
 class TaskEditScreen extends StatefulWidget {
   final Task? task;
   final int? taskIndex;
