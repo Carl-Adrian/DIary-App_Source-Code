@@ -48,7 +48,7 @@ class WeatherPageState extends State<WeatherPage>
     double? lon;
 
     try {
-      // STEP 1: Permissions
+      //Permissions
       LocationPermission permission = await Geolocator.checkPermission();
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
@@ -64,7 +64,7 @@ class WeatherPageState extends State<WeatherPage>
         return;
       }
 
-      // STEP 2: Get real location
+      // Get real location
       Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high,
       );
@@ -72,7 +72,7 @@ class WeatherPageState extends State<WeatherPage>
       lat = position.latitude;
       lon = position.longitude;
 
-      // STEP 3: Reverse geocode → REAL AREA NAME (e.g., Santo Niño)
+      // Reverse geocode → REAL AREA NAME (e.g., Santo Niño)
       List<Placemark> placemarks = await placemarkFromCoordinates(lat, lon);
 
       if (placemarks.isNotEmpty) {
@@ -93,7 +93,7 @@ class WeatherPageState extends State<WeatherPage>
       lon ??= 120.9842;
     }
 
-    // STEP 4: Fetch weather
+    // Fetch weather
     final url = Uri.parse(
         "https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&units=metric&appid=$apiKey");
 
@@ -235,7 +235,7 @@ class WeatherPageState extends State<WeatherPage>
           style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
-            color: Colors.white, // FIXED
+            color: Colors.white,
           ),
         ),
         const SizedBox(height: 5),
@@ -243,7 +243,7 @@ class WeatherPageState extends State<WeatherPage>
           label,
           style: const TextStyle(
             fontSize: 14,
-            color: Colors.white, // FIXED (was white70)
+            color: Colors.white,
           ),
         ),
       ],
